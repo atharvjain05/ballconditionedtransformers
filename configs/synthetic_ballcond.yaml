@@ -1,0 +1,41 @@
+run_name: synthetic_ballcond
+
+seed: 0
+device: null
+
+data:
+  name: synthetic
+  num_sequences: 200
+  frames_per_sequence: 200
+  val_fraction: 0.2
+  history: 20
+  horizon: 20
+  stride: 5
+  min_players: 2
+  n_players: 10
+  ball_attraction: 0.04
+  home_attraction: 0.02
+  noise: 0.005
+  require_ball_history: true
+
+train:
+  epochs: 15
+  batch_size: 32
+  num_workers: 0
+  lr: 3.0e-4
+  weight_decay: 1.0e-4
+  grad_clip: 1.0
+  log_every: 1
+
+eval:
+  horizons: [5, 10, 20]
+
+model:
+  name: transformer_ballcond
+  kwargs:
+    d_model: 128
+    n_heads: 4
+    n_layers: 6
+    n_ball_layers: 6
+    ff_mult: 4
+    dropout: 0.1

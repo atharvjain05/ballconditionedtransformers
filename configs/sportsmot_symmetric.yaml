@@ -1,0 +1,40 @@
+run_name: sportsmot_symmetric
+
+seed: 0
+device: null
+
+# SportsMOT is player-only (no ball labels). This config uses the symmetric
+# transformer: multi-agent history -> future player positions, no ball token.
+data:
+  name: sportsmot
+  root: data/raw/SportsMOT/dataset
+  train_split: train
+  val_split: val
+  history: 20
+  horizon: 20
+  stride: 5
+  min_players: 2
+  limit: null
+  limit_val: null
+  require_ball_history: false
+
+train:
+  epochs: 30
+  batch_size: 16
+  num_workers: 2
+  lr: 3.0e-4
+  weight_decay: 1.0e-4
+  grad_clip: 1.0
+  log_every: 1
+
+eval:
+  horizons: [5, 10, 20]
+
+model:
+  name: transformer_symmetric
+  kwargs:
+    d_model: 192
+    n_heads: 6
+    n_layers: 6
+    ff_mult: 4
+    dropout: 0.1

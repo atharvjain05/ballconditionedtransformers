@@ -1,0 +1,35 @@
+run_name: synthetic_kalman
+
+seed: 0
+device: null
+
+data:
+  name: synthetic
+  num_sequences: 200
+  frames_per_sequence: 200
+  val_fraction: 0.2
+  history: 20
+  horizon: 20
+  stride: 5
+  min_players: 2
+  n_players: 10
+  ball_attraction: 0.04
+  home_attraction: 0.02
+  noise: 0.005
+  require_ball_history: true
+
+train:
+  epochs: 0
+  batch_size: 32
+  num_workers: 0
+  lr: 0.0
+  weight_decay: 0.0
+  grad_clip: 1.0
+  log_every: 1
+
+eval:
+  horizons: [5, 10, 20]
+
+model:
+  name: kalman
+  kwargs: {}

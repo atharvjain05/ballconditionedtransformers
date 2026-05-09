@@ -1,0 +1,26 @@
+# Core
+torch>=2.6
+numpy>=1.26
+scipy>=1.13
+pandas>=2.2
+
+# Visualization / notebook
+matplotlib>=3.8
+seaborn>=0.13
+tqdm>=4.66
+ipykernel>=6.29
+ipywidgets>=8.1
+
+# Configuration / experiment management
+pyyaml>=6.0
+omegaconf>=2.3
+
+# Filtering baseline
+filterpy>=1.4.5
+
+# Optional: dataset utilities
+huggingface_hub>=0.24
+requests>=2.32
+
+# Code quality (already in .venv but pinned here for reproducibility)
+black>=24.0

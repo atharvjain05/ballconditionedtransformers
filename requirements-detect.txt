@@ -1,0 +1,6 @@
+# Optional: SoccerNet player detection (YOLO). Install on top of the main env.
+# pip install -r requirements-detect.txt
+#
+# Optional: also `pip install SoccerNet` for scripts/setup_soccernet_yolo_local.py (download step).
+pillow>=10.0
+ultralytics>=8.3.0,<9

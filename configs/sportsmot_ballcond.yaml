@@ -1,0 +1,43 @@
+run_name: sportsmot_ballcond
+
+seed: 0
+device: null
+
+# IMPORTANT: SportsMOT does not annotate the ball. To use this config you must
+# either (a) supply ball positions from a separate detector / dataset, or
+# (b) train without ball conditioning (ball_mask all-zero, model degrades to
+# the symmetric variant). See README -> "Data caveat".
+data:
+  name: sportsmot
+  root: data/raw/SportsMOT/dataset
+  train_split: train
+  val_split: val
+  history: 20
+  horizon: 20
+  stride: 5
+  min_players: 2
+  limit: null
+  limit_val: null
+  require_ball_history: false
+
+train:
+  epochs: 30
+  batch_size: 16
+  num_workers: 2
+  lr: 3.0e-4
+  weight_decay: 1.0e-4
+  grad_clip: 1.0
+  log_every: 1
+
+eval:
+  horizons: [5, 10, 20]
+
+model:
+  name: transformer_ballcond
+  kwargs:
+    d_model: 192
+    n_heads: 6
+    n_layers: 6
+    n_ball_layers: 6
+    ff_mult: 4
+    dropout: 0.1

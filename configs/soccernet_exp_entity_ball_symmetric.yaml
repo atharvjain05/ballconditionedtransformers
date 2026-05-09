@@ -1,0 +1,42 @@
+# Entity transformer: players + one token per ball track (same self-attention set).
+run_name: soccernet_entity_ball_symmetric
+
+seed: 0
+device: null
+
+data:
+  name: soccernet
+  root: /content/drive/MyDrive/soccernet/tracking
+  train_split: train
+  val_split: test
+  history: 20
+  horizon: 20
+  stride: 5
+  min_players: 2
+  ball_area_threshold: 2000.0
+  prefer_gameinfo_ball: true
+  limit: null
+  limit_val: null
+  require_ball_history: false
+
+train:
+  epochs: 30
+  batch_size: 16
+  num_workers: 2
+  lr: 3.0e-4
+  weight_decay: 1.0e-4
+  grad_clip: 1.0
+  log_every: 1
+
+eval:
+  horizons: [5, 10, 20]
+
+model:
+  name: transformer_entity_ball_symmetric
+  kwargs:
+    d_model: 192
+    n_heads: 6
+    n_layers: 6
+    ff_mult: 4
+    dropout: 0.1
+    entity_history: 20

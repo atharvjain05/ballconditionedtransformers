@@ -1,0 +1,21 @@
+# Google Colab already ships with a CUDA-enabled PyTorch build.
+# Do not install `torch` from requirements.txt unless you intentionally want
+# to replace Colab's preinstalled CUDA wheel.
+
+numpy>=1.26
+scipy>=1.13
+pandas>=2.2
+
+matplotlib>=3.8
+seaborn>=0.13
+tqdm>=4.66
+ipywidgets>=8.1
+
+pyyaml>=6.0
+omegaconf>=2.3
+
+filterpy>=1.4.5
+huggingface_hub>=0.24
+requests>=2.32
+
+pytest>=8.0
